@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<style>
+		
+				body {
+			background-color: #e0ffff;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		form {
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+			margin: 20px auto;
+			padding: 20px;
+			width: 60%;
+		}
+
+		label {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 10px;
+			color: #7b68ee;
+		}
+
+		input[type="text"] {
+			border-radius: 5px;
+			border: 2px solid #87cefa;
+			font-size: 16px;
+			padding: 10px;
+			width: 100%;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #9370db;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px 20px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #7b68ee;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<form method='POST' action=''>{% csrf_token %}
+		{{form}}<br><br><br>
+        <input type="submit" value='Save'/>
+    </form>
+
+</body>
+</html>

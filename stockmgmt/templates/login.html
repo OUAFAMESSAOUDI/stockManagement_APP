@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <style>
+      /* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,700&display=swap');
+
+/* Set default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #FAF9F6;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+/* Style the login box */
+.login-box {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+
+.login-box h1 {
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.login-box {
+    /* existing styles */
+    background-image: url('téléchargement.png');
+    background-size: cover;
+  }
+  
+/* body {
+    background-image: url('image.jpg');
+    background-size: cover;
+  } */
+
+  
+body {
+    background: linear-gradient(to bottom right,#e0ffff, #87cefa, #9370db, #7b68ee);
+  } 
+  
+
+/* Style the form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"], input[type="password"] {
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background: #f3f3f3;
+  color: #333;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  background: #fff;
+  outline: none;
+}
+
+button[type="submit"] {
+  background: #2e2d45;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  transition: background 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: #2e2d45;
+}
+
+    </style>
+  </head>
+  <body>
+    <br><br><br><br><br><br>
+    <div class="login-box">
+      <br><br>
+      <h1>Login</h1>
+      <br>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <div class="links">
+            <a href="forgot_passwd.html">Forgot Password?</a>
+        </div>
+        <br><br><br><br><br><br>
+        <button type="submit">Sign In</button>
+        <input type="hidden" name="next" value="{{ next }}">
+      </form>
+    </div>
+  </body>
+</html>

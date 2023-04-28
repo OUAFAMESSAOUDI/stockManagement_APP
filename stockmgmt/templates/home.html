@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+   <style> 
+   /* Set default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #FAF9F6;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Style the navigation bar */
+nav {
+  background: #2e2d45;
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+nav a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Style the hero section */
+#hero {
+  background: linear-gradient(to bottom right,#e0ffff, #87cefa, #9370db, #7b68ee);
+  height: calc(108vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+/* Style the call-to-action button */
+.btn {
+  background: #2e2d45;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #2e2d45;
+}
+ 
+
+   </style>
+  </head>
+  <body>
+    <main>
+      <section id="hero">
+        <h1>Welcome to SecStock</h1>
+        <p>Our website is dedicated to stock management, providing you with easy access to all the products you need</p>
+        <a href="login.html" class="btn">Login</a>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Item List</title>
+	<style> 
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f8f8f8;
+}
+
+header {
+	background: linear-gradient(to bottom right,#e0ffff, #87cefa, #9370db, #7b68ee);
+	padding: 20px;
+	text-align: center;
+}
+
+
+
+header h1 {
+	margin: 0;
+}
+
+main {
+	margin: 20px auto;
+	width: 80%;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+/*Align the title to the center of the page*/
+.table{
+	font-size: 13px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	text-align: center;
+}
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+	background: #ffff
+}
+
+.table tr:nth-child(even){
+	background: #0000
+}
+
+th {
+  background-color: #ffff;
+  color: white;
+}
+
+th {
+	background-color: #2e2d45;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+td {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+td:first-child {
+	font-weight: bold;
+}
+
+.actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+button {
+  background-color: #2e2d45; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #2e2d45; /* Darker green */
+}
+
+
+.actions a {
+	color: #333;
+	background-color: #fff;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-bottom: 5px;
+	transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"] {
+  background-color: #2e2d45;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  background-color: #2e2d45;
+}
+
+td.category,
+td.item-name {
+  text-align: center;
+}
+
+#id_category {
+    width: 200px;
+    height: 20px;
+}
+
+#id_item_name {
+    width: 200px;
+    height: 20px;
+}
+
+.logout-button {
+    float: right;
+}
+
+
+.actions a:hover {
+	color: #fff;
+	background-color: #333;
+}
+.display_table{
+	border-bottom-right-radius: 20px;
+	/*border-bottom-left-radius: 20px;*/
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	box-shadow: 12px 12px 20px 6px #2e6da4;
+}
+
+
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>list of items</h1><br><br>
+
+		<form method='POST' action="{% url 'logout' %}">
+      {% csrf_token %}
+      <input class="logout-button" type="submit" value="Logout">
+    </form>
+	</header>
+	<br>
+
+	<br><br>
+	<form method='POST' action=''>{% csrf_token %}
+	    {{form}}
+	        <input type="submit" value='Search'/>
+	</form>
+	<br><br>
+
+	<main>
+	<div class="display_table">
+	<table class='table'>
+        <thead>
+          <tr>
+            <th>COUNT</th>
+            <th>CATEGORY</th>
+            <th>ITEM NAME</th>
+            <th>QUANTITY IN STORE</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+      {% for instance in queryset %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td class="category">{{instance.category}}</td>
+            <td class="item-name"><a href="{% url 'update_items' instance.id %}">{{instance.item_name}}</a></td>
+            <td>{{instance.quantity}}</td>
+            <td><a href="{% url 'delete_item' instance.id %}">Delete</a></td>
+          </tr>
+      {% endfor %}
+    </table>
+    </div><!--End of display table-->
+
+    <br><br>
+
+
+	  <div class="add_button">
+	    	<button class="button" onclick="location.href='{% url 'add_items' %}'" type="button">Add Item</button>
+	  </div>
+	  <br><br>
+
+
+	</main>
+</body>
+</html>
